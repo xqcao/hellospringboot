@@ -1,0 +1,27 @@
+
+server:
+    port: 9191
+spring:
+    application:
+        name: CLOUD-GATEWAY
+    cloud:
+        gateway:
+            routes:
+                - id: USER-SVC
+                  uri: lb://USER-SVC
+                  predicates:
+                    - Path=/users/**
+                   
+                - id: DEPARTMENT-SVC
+                  uri: lb://DEPARTMENT-SVC
+                  predicates:
+                    - Path=/departments/**
+                   
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
