@@ -1,6 +1,8 @@
 server:
   port: 9001
 spring:
+  application:
+    name: DEPARTMENT-SVC
   h2:
     console.enabled: true
   sql:
@@ -13,3 +15,12 @@ spring:
     driverClassName: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
